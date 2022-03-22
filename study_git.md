@@ -198,4 +198,47 @@ $ git checkout -- readme.txt//
 
     合并分支时，加上`--no-ff`参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而`fast forward`合并就看不出来曾经做过合并。
 
-21. 
+21. 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
+
+    当手头工作没有完成时，先把工作现场`git stash`一下，然后去修复bug，修复后，再`git stash pop`，回到工作现场；但`git stash pop`会删除stash内容，可用`git stash list`查看工作现场的列表。一是用`git stash apply`恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除；
+
+    在master分支上修复的bug，想要合并到当前dev分支，可以用`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
+
+    ## 远程多人协作
+
+22. 因此，多人协作的工作模式通常是这样：
+
+    1. 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
+    2. 如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
+    3. 如果合并有冲突，则解决冲突，并在本地提交；
+    4. 没有冲突或者解决掉冲突后，再用`git push origin <branch-name>`推送就能成功！
+
+    如果`git pull`提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`。
+
+23. 查看远程库信息，使用`git remote -v`；
+
+    本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+    从本地推送分支，使用`git push origin branch-name`，如果推送失败，先用`git pull`抓取远程的新提交；
+
+    在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
+
+    建立本地分支和远程分支的关联，使用`git branch --set-upstream branch-name origin/branch-name`；
+
+    从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
+
+    【多人协作部分理解还有点问题，下次找找视频看看】
+
+    ## 标签管理
+
+24. 命令`git tag <tagname>`用于新建一个标签，默认为`HEAD`，即最新的`commit`版本，也可以指定一个commit id；用`git log --pretty=online --abbrev-commit`查看历史提交的id
+
+    命令`git tag -a <tagname> -m "blablabla..."`可以指定标签信息；
+
+    命令`git tag`可以查看所有标签。标签一般都保存在本地，所以可以用`git tag -d v0.1`来删除某个标签，要推送某个标签到远程，用`git push origin v1.1`,或者一次性推送，所有尚未完成的本地标签`git push origin --tags`，若要删除一个远程标签，先在本地删除，再用`git push origin :refs/tags/<tagname>`来删除一个远程标签
+
+    ## 其他
+
+25. github中点fork即可自己的主页中克隆一个别人的库，然后即可下载至自己的本地仓库，在github上发起pull request可以申请官方库接受你的更改
+
+26. 对不同的远程库分别命名，即可与多个远程库链接
