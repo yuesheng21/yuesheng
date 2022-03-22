@@ -15,31 +15,31 @@
 
    创建git库后多了.git目录，请不要随意改动该文件，用于追踪管理版本库的
 
-3. 两步将文件提交到仓库，git add和git commit -m“附加说明”；注意，commit一次提交所有文件，故可多次add，只用一次commit
+3. 两步将文件提交到仓库，`git add`和`git commit -m`“附加说明”；注意，`commit`一次提交所有文件，故可多次add，只用一次commit
 
    ##   时光机穿梭
 
    
 
-4. > git status// 查看文件状态
+4. > `git status`// 查看文件状态
    >
-   > git diff readme.txt// 查看更改细节
+   > `git diff readme.txt`// 查看更改细节
 
 5. ~~~c++
    	git log；//查看版本更改历史记录
-   	git log --pretty=oneline;//信息简略的历史记录
-   	git reset --hard HEAD^;//返回上一版本，或使用HEAD~100，返回上一百个版本
-   	cat readme.txt//check detailed content打印内容
-   	git reset --hard//+版本号即刻来到’未来‘的版本
+      	git log --pretty=oneline;//信息简略的历史记录
+      	git reset --hard HEAD^;//返回上一版本，或使用HEAD~100，返回上一百个版本
+      	cat readme.txt//check detailed content打印内容
+      	git reset --hard//+版本号即刻来到’未来‘的版本
        git reflog//查看每一次的命令，查看版本号
        git diff HEAD --readme.txt//可以查看工作区与版本库最新的区别
    ~~~
 
-6. 因此-m后的备注不要随便打
+6. 因此`-m`后的备注不要随便打
 
-7. - HEAD指向的版本就是当前版本，因此，git允许我们在版本的历史之间穿梭，使用命令 ‘git reset --hard commit_id'  
-   - 穿梭前，用git log 可以查看提交历史，以便确定要回退到哪个版本
-   - 要重返未来，用 ’git reflog‘ 查看历史命令，以便确定要回到未来的版本
+7. - HEAD指向的版本就是当前版本，因此，git允许我们在版本的历史之间穿梭，使用命令 `git reset --hard commit_id' `
+   - 穿梭前，用`git log `可以查看提交历史，以便确定要回退到哪个版本
+   - 要重返未来，用 `git reflog `查看历史命令，以便确定要回到未来的版本
 
 8. learngit就是一个工作区；可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
 9. 要区分暂存区和工作区
@@ -104,67 +104,67 @@ $ git checkout -- readme.txt//
 
 
 
-​	Git：Git是一种分布式文件管理系统。
+​	Git是一种分布式文件管理系统。
 
-​	git help:获取git基本命令
+​	<code>git help</code> :获取git基本命令
 
-​	Git init :
+​	<code>Git init</code>  :
 
 ​	创建一个空的Git库。在当前目录中产生一个.git 的子目录。以后，所有的文件变化信息都会保存到这	个目录下。
 
-​	Git add ：
+​	`Git add` ：
 
 ​	将当前工作目录中更改或者新增的文件加入到Git的索引中，加入到Git的索引中就表示记入了版本历	史中，这也是提交之前所需要执行的一步。
 
-​	Git rm ：
+​	`Git rm` ：
 ​	从当前的工作目录中和索引中删除文件。 
 ​	可以递归删除，即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文       件。
 
-​	Git status：查看版本库的变化。
+​	`Git status`：查看版本库的变化。
 
-​	Git log ：查看历史日志，包含每次版本变化
+​	`Git log `：查看历史日志，包含每次版本变化
 
-​	Git merge： 
+​	`Git merge`： 
 ​	把服务器上下载下来的代码和本地代码合并。或者进行分支合并。
 
-​	Git diff ：
+​	`Git diff` ：
 ​	把本地的代码和index中的代码进行比较，或者是把index中的代码和本地仓库中的代码进行比较。
 
-​	Git-ls-files ：
+​	`Git-ls-files` ：
 ​	查看当前的git库中有那些文件
 
-​	Git mv ：
+​	`Git mv` ：
 ​	重命名一个文件、目录或者链接。
 
-​	 git branch ：
+​	` git branch` ：
 
 ​	列出本地git库中的所有分支。在列出的分支中，若分支名前有*，则表示此分支为当前分支。
 
-​	git branch 分支名 ：创建分支
+​	`git branch` 分支名 ：创建分支
 
-​	git checkout 分支名 ：切换到某个分支上
+​	`git checkout` 分支名 ：切换到某个分支上
 
-​	git branch –D 分支名 ：删除分支
+​	`git branch –D` 分支名 ：删除分支
 
-​	git diff master 分支名：比较主分支与目标分支的区别
+​	`git diff master `分支名：比较主分支与目标分支的区别
 
-​	git-show-branch ：查看分支历史
+​	`git-show-branch` ：查看分支历史
 
- 	git whatchanged ：查看分支操作记录
+ 	`git whatchanged` ：查看分支操作记录
 
-​	Git revert：还原某次对版本的修改 
+​	`Git revert`：还原某次对版本的修改 
 
-​	Git config ：新增更改git的各种设置
+​	`Git config` ：新增更改git的各种设置
 
-​	Git show ：显示对象的各种类型
+​	`Git show `：显示对象的各种类型
 
-​	Git pull ：
+​	`Git pull `：
 ​	从服务器的仓库中获取代码，和本地代码合并。
 
-​	Git push ：
+​	`Git push` ：
 ​	将本地commit的代码更新到远程版本库中，例如 “git push origin”就会将本地的代码更新到名为orgin的远程版本库中。 
 
-​	Git fetch ：
+​	`Git fetch` ：
 ​	从服务器的仓库中下载代码。
 
 ## 分支管理策略
