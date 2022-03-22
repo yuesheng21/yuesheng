@@ -167,6 +167,8 @@ $ git checkout -- readme.txt//
 ​	`Git fetch` ：
 ​	从服务器的仓库中下载代码。
 
+​	`git log -1`显示最近的一次提交
+
 ## 分支管理策略
 
 18. Git鼓励大量使用分支：
@@ -242,3 +244,11 @@ $ git checkout -- readme.txt//
 25. github中点fork即可自己的主页中克隆一个别人的库，然后即可下载至自己的本地仓库，在github上发起pull request可以申请官方库接受你的更改
 
 26. 对不同的远程库分别命名，即可与多个远程库链接
+
+27. 配置别名，例如：`git config --global alias.st status`那么以后st即可代表status，参数--global是全局参数，这台电脑的所有git仓库即可使用。要管理配置文件，可打开.git/config中，别名在alias后面，可直接再次修改，或直接删除
+
+28. 利用linux搭建git服务器  [教程](https://www.liaoxuefeng.com/wiki/896043488029600/899998870925664)
+
+29. 推荐图形化编程工具sourcetree[官网](https://www.sourcetreeapp.com/)
+
+30. 常用命令表格[Git Cheat Sheet](https://liaoxuefeng.gitee.io/resource.liaoxuefeng.com/git/git-cheat-sheet.pdf)
