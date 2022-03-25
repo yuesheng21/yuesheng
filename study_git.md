@@ -252,3 +252,70 @@ $ git checkout -- readme.txt//
 29. 推荐图形化编程工具sourcetree[官网](https://www.sourcetreeapp.com/)
 
 30. 常用命令表格[Git Cheat Sheet](https://liaoxuefeng.gitee.io/resource.liaoxuefeng.com/git/git-cheat-sheet.pdf)
+
+    ## linux中常用的linux命令
+
+31. git Bash :unix和linux风格的命令行。
+
+32. Git CMD：Windows风格的命令行。
+
+33. Git GUI： 图形界面的GIt，不建议初学者使用，尽量先熟悉常用命令
+
+34. `cd readme`改变目录
+
+35. `cd..`回退到上一目录，直接`cd`进入默认目录
+
+36. `pwd`显示当前所在的目录路径
+
+37. `ls(II)`都是列出当前目录中的所有文件，只不过加II显示的内容更为详细
+
+38. `touch readme.txt ` 在当前目录新建一个文件
+
+39. `rm readme.txt` 删除一个文件
+
+40. `mkdir filename`新建一个文件夹，命名为filename
+
+41. `rm-r filename`:删除一个文件夹
+
+42. `mv readme.txt filename`:移动文件，即移动readme文件到filename目录下
+
+43. `reset`重新初始化终端/清屏
+
+44. `clear`清屏
+
+45. `history`查看命令历史
+
+46. `help`帮助
+
+47. `exit`退出
+
+    ## git flow 常用分支名称
+
+48. * Production 分支
+
+      也就是我们经常使用的Master分支，这个分支最近发布到生产环境的代码，最近发布的Release， 这个分支只能从其他分支合并，不能在这个分支直接修改
+
+    * Develop分支
+
+      这个分支是我们是我们的主开发分支，包含所有要发布到下一个Release的代码，这个主要合并与其他分支，比如Feature分支
+
+    * Feature分支
+
+      这个分支主要是用来开发一个新的功能，一旦开发完成，我们合并回Develop分支进入下一个Release
+
+    * Release分支
+
+      当你需要一个发布一个新Release的时候，我们基于Develop分支创建一个Release分支，完成Release后，我们合并到Master和Develop分支
+
+    * Hotfix分支
+
+      当我们在Production发现新的bug时，我们需要创建一个该分支，完成后，再合并回Develop，所有Hotfix的改动会进入下一个Release
+
+49. ![img](https://upload-images.jianshu.io/upload_images/1366859-091b03e7e4a6daa3.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
+
+50. 一般使用规则 
+
+    1. 所有在Master分支上的Commit应该打上Tag，一般情况下Master不存在Commit，Devlop分支基于Master分支创建
+    2. Feature分支做完后，必须合并回Develop分支, 合并完分支后一般会删点这个Feature分支，毕竟保留下来意义也不大。
+    3. Release分支基于Develop分支创建，打完Release分支之后，我们可以在这个Release分支上测试，修改Bug等。同时，其它开发人员可以基于Develop分支新建Feature (记住：一旦打了Release分支之后不要从Develop分支上合并新的改动到Release分支)发布Release分支时，合并Release到Master和Develop， 同时在Master分支上打个Tag记住Release版本号，然后可以删除Release分支了。
+    4. hotfix分支基于Master分支创建，开发完后需要合并回Master和Develop分支，同时在Master上打一个tag。
